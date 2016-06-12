@@ -1,0 +1,7 @@
+Narg File Manager
+Version 1.42 Full
+By Nexus 4833
+For support you can post to: http://forum.blockland.us/index.php?topic=161834
+Otherwise, email me at hoff121324@gmail.com
+
+Includes several independent modules, feel free to use/reference them in your own mods!

@@ -1,0 +1,1005 @@
+new GuiControl(nfm_options)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	enabled = "1";
+	visible = "1";
+	clipToParent = "1";
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "30 74";
+		extent = "580 332";
+		minExtent = "240 175";
+		enabled = "1";
+		visible = "1";
+		clipToParent = "1";
+		text = "File Manager Options";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "0";
+		canMaximize = "1";
+		minSize = "500 180";
+		closeCommand = "canvas.popdialog(nfm_options);";
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "4 25";
+			extent = "422 302";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			willFirstRespond = "0";
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = "0";
+			childMargin = "0 0";
+			rowHeight = "40";
+			columnWidth = "30";
+
+			new GuiSwatchCtrl(nfm_options_list)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "405 486";
+				minExtent = "300 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				color = "200 200 200 255";
+
+				//Basic options
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "8 8";
+					extent = "391 128";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					color = "180 180 180 255";
+
+					new GuiMLTextCtrl()
+					{
+						profile = "GuiMLTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 2";
+						extent = "153 16";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						lineSpacing = "2";
+						allowColorChars = "0";
+						maxChars = "-1";
+						text = "<font:" @ $NFM::Font @ ":16>Basic Options";
+						maxBitmapHeight = "-1";
+						selectable = "1";
+						autoResize = "1";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 20";
+						extent = "77 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Home Directory:";
+						maxLength = "255";
+					};
+					new GuiTextEditCtrl(nfm_options_homedirectory)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 20";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "saves/";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiTextEditCtrl(nfm_options_font)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 40";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "arial bold";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 40";
+						extent = "61 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Default Font:";
+						maxLength = "255";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 60";
+						extent = "63 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "List Tile Size:";
+						maxLength = "255";
+					};
+					new GuiSwatchCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "92 60";
+						extent = "284 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						color = "0 78 112 2";
+					
+						new GuiRadioCtrl(nfm_options_tilesize1)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "0 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.settilesize(1);";
+							text = "Small";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+						new GuiRadioCtrl(nfm_options_tilesize2)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "80 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.settilesize(2);";
+							text = "Medium";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+						new GuiRadioCtrl(nfm_options_tilesize3)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "160 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.settilesize(3);";
+							text = "Large";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 80";
+						extent = "60 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Default Sort:";
+						maxLength = "255";
+					};
+					new GuiSwatchCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "92 80";
+						extent = "284 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						color = "0 78 112 2";
+					
+						new GuiRadioCtrl(nfm_options_sort0)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "0 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.setsort(0);";
+							text = "Name";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+						new GuiRadioCtrl(nfm_options_sort1)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "80 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.setsort(1);";
+							text = "Date";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+					};
+					new GuiBitmapButtonCtrl()
+					{
+						profile = "BlockButtonProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 100";
+						extent = "200 24";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "canvas.pushdialog(nfm_tutorial);";
+						text = "Show me the tutorial again";
+						groupNum = "-1";
+						buttonType = "PushButton";
+						bitmap = "base/client/ui/button1";
+						lockAspectRatio = "0";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "0";
+						mKeepCached = "0";
+						mColor = "255 255 255 255";
+					};
+				};
+
+				//Brick Load/Save Options
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "8 144";
+					extent = "391 138";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					color = "180 180 180 255";
+
+					new GuiMLTextCtrl()
+					{
+						profile = "GuiMLTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 2";
+						extent = "270 16";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						lineSpacing = "2";
+						allowColorChars = "0";
+						maxChars = "-1";
+						text = "<font:" @ $NFM::Font @ ":16>Brick Load/Save Options";
+						maxBitmapHeight = "-1";
+						selectable = "1";
+						autoResize = "1";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 20";
+						extent = "61 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Save Events:";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_saveevents)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 20";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+					new GuiTextEditCtrl(nfm_options_colormode)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 100";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "3";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 100";
+						extent = "66 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Color Method:";
+						maxLength = "255";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 60";
+						extent = "81 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Load Ownership:";
+						maxLength = "255";
+					};
+					new GuiSwatchCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "92 60";
+						extent = "284 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						color = "0 78 112 2";
+
+						new GuiRadioCtrl(nfm_options_loadowner1)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "0 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.setloadowner(1);";
+							text = "Saved";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+						new GuiRadioCtrl(nfm_options_loadowner0)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "80 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.setloadowner(0);";
+							text = "Yours";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+						new GuiRadioCtrl(nfm_options_loadowner2)
+						{
+							profile = "GuiRadioProfile";
+							horizSizing = "right";
+							vertSizing = "bottom";
+							position = "160 0";
+							extent = "76 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							command = "nfm_options.setloadowner(2);";
+							text = "Public";
+							groupNum = "-1";
+							buttonType = "RadioButton";
+						};
+					};
+					new GuiMLTextCtrl()
+					{
+						profile = "GuiMLTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "82 118";
+						extent = "282 14";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						lineSpacing = "2";
+						allowColorChars = "0";
+						maxChars = "-1";
+						text = "*Keep this at 3 unless you know what you are doing";
+						maxBitmapHeight = "-1";
+						selectable = "1";
+						autoResize = "1";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 80";
+						extent = "61 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Load Offset:";
+						maxLength = "255";
+					};
+					new GuiTextEditCtrl(nfm_options_loadoffset)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 80";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "0 0 0";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 40";
+						extent = "82 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Save Ownership:";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_saveownership)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 40";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+				};
+
+				//Advanced Options
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "8 290";
+					extent = "391 188";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					color = "180 180 180 255";
+
+					new GuiMLTextCtrl()
+					{
+						profile = "GuiMLTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 2";
+						extent = "153 16";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						lineSpacing = "2";
+						allowColorChars = "0";
+						maxChars = "-1";
+						text = "<font:" @ $NFM::Font @ ":16>Advanced Options";
+						maxBitmapHeight = "-1";
+						selectable = "1";
+						autoResize = "1";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 20";
+						extent = "84 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Load Brickcounts";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_brickcount)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 20";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "180 20";
+						extent = "178 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = " Warning: can cause slow load times";
+						maxLength = "255";
+					};
+					new GuiTextEditCtrl(nfm_options_buffersize)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 120";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "50";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 120";
+						extent = "58 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Buffer Size:";
+						maxLength = "255";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 60";
+						extent = "101 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Buffer while Loading";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_buffer)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 60";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 100";
+						extent = "78 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Show Warnings";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_warning)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 100";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 140";
+						extent = "64 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Buffer Delay:";
+						maxLength = "255";
+					};
+					new GuiTextEditCtrl(nfm_options_buffertime)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 140";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "1";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+					new GuiCheckBoxCtrl(nfm_options_versioncheck)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 40";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 40";
+						extent = "97 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Auto Version Check";
+						maxLength = "255";
+					};
+					new GuiBitmapButtonCtrl()
+					{
+						profile = "BlockButtonProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "180 37";
+						extent = "136 24";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "narg_versioncheck(1, \"NFM\", $nfm_version);";
+						text = "Check Version Now";
+						groupNum = "-1";
+						buttonType = "PushButton";
+						bitmap = "base/client/ui/button1";
+						lockAspectRatio = "0";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "0";
+						mKeepCached = "0";
+						mColor = "255 255 255 255";
+					};
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 80";
+						extent = "81 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Cache Searches";
+						maxLength = "255";
+					};
+					new GuiCheckBoxCtrl(nfm_options_cache)
+					{
+						profile = "GuiCheckBoxProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "120 80";
+						extent = "140 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "";
+						text = "Yes";
+						groupNum = "-1";
+						buttonType = "ToggleButton";
+					};
+
+					new GuiTextCtrl()
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "4 160";
+						extent = "64 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Settings File:";
+						maxLength = "255";
+					};
+					new GuiTextEditCtrl(nfm_options_prefspath)
+					{
+						profile = "GuiTextEditProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "82 160";
+						extent = "293 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "1";
+						maxLength = "255";
+						historySize = "0";
+						password = "0";
+						tabComplete = "0";
+						sinkAllKeyEvents = "0";
+					};
+				};
+			};
+		};
+
+		//Buttons on the side
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "432 30";
+			extent = "140 144";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			color = "0 0 0 0";
+
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "140 30";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				command = "nfm_options.clickapply();";
+				text = "Apply";
+				groupNum = "-1";
+				buttonType = "PushButton";
+				bitmap = "base/client/ui/button1";
+				lockAspectRatio = "0";
+				alignLeft = "0";
+				alignTop = "0";
+				overflowImage = "0";
+				mKeepCached = "0";
+				mColor = "255 255 255 255";
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 32";
+				extent = "140 30";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				command = "nfm_options.clickcancel();";
+				accelerator = "escape";
+				text = "Cancel";
+				groupNum = "-1";
+				buttonType = "PushButton";
+				bitmap = "base/client/ui/button1";
+				lockAspectRatio = "0";
+				alignLeft = "0";
+				alignTop = "0";
+				overflowImage = "0";
+				mKeepCached = "0";
+				mColor = "255 255 255 255";
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 96";
+				extent = "140 48";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				command = "nfm_options.clickok();";
+				text = "OK";
+				groupNum = "-1";
+				buttonType = "PushButton";
+				bitmap = "base/client/ui/button1";
+				lockAspectRatio = "0";
+				alignLeft = "0";
+				alignTop = "0";
+				overflowImage = "0";
+				mKeepCached = "0";
+				mColor = "230 255 230 255";
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 64";
+				extent = "140 30";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				command = "nfm_options.clickdefaults();";
+				text = "Load Defaults";
+				groupNum = "-1";
+				buttonType = "PushButton";
+				bitmap = "base/client/ui/button1";
+				lockAspectRatio = "0";
+				alignLeft = "0";
+				alignTop = "0";
+				overflowImage = "0";
+				mKeepCached = "0";
+				mColor = "255 255 255 255";
+			};
+		};
+	};
+};
+

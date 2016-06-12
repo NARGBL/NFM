@@ -1,0 +1,105 @@
+new GuiControl(nfm_renamedialog)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	enabled = "1";
+	visible = "1";
+	clipToParent = "1";
+	
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "137 125";
+		extent = "264 94";
+		minExtent = "8 2";
+		enabled = "1";
+		visible = "1";
+		clipToParent = "1";
+		text = "Choose a name";
+		maxLength = "255";
+		resizeWidth = "0";
+		resizeHeight = "0";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "0";
+		canMaximize = "0";
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(nfm_renamedialog);";
+		
+		new GuiTextEditCtrl(nfm_renametext)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 32";
+			extent = "232 18";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			altCommand = "nfm_renameok();";
+			maxLength = "255";
+			historySize = "0";
+			password = "0";
+			tabComplete = "0";
+			sinkAllKeyEvents = "0";
+		};
+	
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "108 56";
+			extent = "140 30";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			command = "nfm_renameok();";
+			accelerator = "enter";
+			text = "OK";
+			groupNum = "-1";
+			buttonType = "PushButton";
+			bitmap = "base/client/ui/button1";
+			lockAspectRatio = "0";
+			alignLeft = "0";
+			alignTop = "0";
+			overflowImage = "0";
+			mKeepCached = "0";
+			mColor = "255 255 255 255";
+		};
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 56";
+			extent = "80 30";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			command = "canvas.popdialog(nfm_renamedialog);";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = "-1";
+			buttonType = "PushButton";
+			bitmap = "base/client/ui/button1";
+			lockAspectRatio = "0";
+			alignLeft = "0";
+			alignTop = "0";
+			overflowImage = "0";
+			mKeepCached = "0";
+			mColor = "255 255 255 255";
+      };
+   };
+};
+

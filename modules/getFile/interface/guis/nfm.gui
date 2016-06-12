@@ -1,0 +1,592 @@
+//the main interface for the file manager
+//by Nexus 4833
+
+new GuiControl(NFMGUI)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "800 600";
+	minExtent = "8 2";
+	enabled = "1";
+	visible = "1";
+	clipToParent = "1";
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "80 60";
+		extent = "640 480";
+		minExtent = "520 370";
+		enabled = "1";
+		visible = "1";
+		clipToParent = "1";
+		text = "File Manager";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "0";
+		canMaximize = "1";
+		minSize = "500 400";
+		closeCommand = "canvas.popdialog(NFMGUI);";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "482 3";
+			extent = "64 18";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			command = "narg_versioncheck(1, \"NFM\", $nfm_version);";
+			text = $nfm_version;
+			groupNum = "-1";
+			buttonType = "PushButton";
+			bitmap = "base/client/ui/button1";
+			lockAspectRatio = "0";
+			alignLeft = "0";
+			alignTop = "0";
+			overflowImage = "0";
+			mKeepCached = "0";
+			mColor = "255 255 255 255";
+		};
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "4 28";
+			extent = "632 448";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			color = "0 0 0 0";
+
+			//Bottom Area
+			//normally I like organizing my guis vertically
+			//but it seems that this is how you control what element gains focus
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "width";
+				vertSizing = "top";
+				position = "0 408";
+				extent = "632 40";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				color = "0 0 0 0";
+
+				new GuiTextEditCtrl(nfmgui_filename)
+				{
+					profile = "GuiTextEditProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "90 12";
+					extent = "300 18";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					altCommand = "nfm_presssaveload();";
+					text = "type stuff here";
+					maxLength = "255";
+					historySize = "0";
+					password = "0";
+					tabComplete = "0";
+					sinkAllKeyEvents = "0";
+				};
+
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "4 4";
+					extent = "32 32";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "nfm_options();";
+					text = " ";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = nfm_getUIPath() @ "gear";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "255 255 255 255";
+				};
+
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "bottom";
+					position = "424 4";
+					extent = "84 32";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "canvas.popdialog(nfmgui);";
+					accelerator = "escape";
+					text = "Cancel";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = "base/client/ui/button1";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "255 255 255 255";
+				};
+
+				new GuiBitmapButtonCtrl(nfmgui_saveload)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "bottom";
+					position = "512 4";
+					extent = "116 32";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "nfm_presssaveload();";
+					text = "Save/Load";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = "base/client/ui/button1";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "210 255 210 255";
+				};
+
+				new GuiBitmapButtonCtrl(nfmgui_exttext)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "bottom";
+					position = "392 11";
+					extent = "28 20";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "nfm_clickchangeext();";
+					text = "";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = "Add-Ons/client_nfm/modules/getFile/ui/rightclick";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "0 0 0 0";
+				};
+
+				new GuiMLTextCtrl()
+				{
+					profile = "GuiMLTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "44 13";
+					extent = "46 16";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					lineSpacing = "2";
+					allowColorChars = "0";
+					maxChars = "-1";
+					text = "<font:" @ $NFM::Font @ ":16>Name:";
+					maxBitmapHeight = "-1";
+					selectable = "1";
+					autoResize = "1";
+				};
+			};
+
+			//Top area
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "632 32";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				color = "0 0 0 0";
+
+				new GuiTextEditCtrl(nfmgui_address)
+				{
+					profile = "NFMTextEditProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "58 8";
+					extent = "512 18";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					altCommand = "nfm_pressgo();";
+					text = "saves/whateveridk/yep";
+					maxLength = "255";
+					historySize = "0";
+					password = "0";
+					tabComplete = "0";
+					sinkAllKeyEvents = "0";
+				};
+
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "44 28";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "nfm_pressup();";
+					text = "Up";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = "base/client/ui/button2";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "255 255 255 255";
+				};
+
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "bottom";
+					position = "580 2";
+					extent = "48 28";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					command = "nfm_pressgo();";
+					text = "Go";
+					groupNum = "-1";
+					buttonType = "PushButton";
+					bitmap = "base/client/ui/button2";
+					lockAspectRatio = "0";
+					alignLeft = "0";
+					alignTop = "0";
+					overflowImage = "0";
+					mKeepCached = "0";
+					mColor = "255 255 255 255";
+				};
+			};
+
+			//Middle Area
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "width";
+				vertSizing = "height";
+				position = "0 32";
+				extent = "632 376";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				color = "0 0 0 0";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "left";
+					vertSizing = "height";
+					position = "322 0";
+					extent = "310 376";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					color = "0 0 0 0";
+
+					new GuiBitmapCtrl(nfmgui_preview)
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "center";
+						vertSizing = "bottom";
+						position = "8 8";
+						extent = "294 200";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						bitmap = "";
+						wrap = "0";
+						lockAspectRatio = "1";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "1";
+						keepCached = "0";
+						mColor = "255 255 255 255";
+						mMultiply = "0";
+
+						new GuiMouseEventCtrl(nfm_imgclickin)
+						{
+							profile = "GuiDefaultProfile";
+							horizSizing = "width";
+							vertSizing = "height";
+							position = "0 0";
+							extent = "294 200";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							lockMouse = "0";
+						};
+					};
+
+					new GuiTextCtrl(nfmgui_brickcount)
+					{
+						profile = "GuiTextProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "8 210";
+						extent = "69 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						text = "Brickcount: waffles";
+						maxLength = "255";
+					};
+
+					new GuiSwatchCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "center";
+						vertSizing = "height";
+						position = "8 232";
+						extent = "294 136";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						color = "255 255 255 255";
+
+						new GuiSwatchCtrl()
+						{
+							profile = "GuiDefaultProfile";
+							horizSizing = "width";
+							vertSizing = "height";
+							position = "4 4";
+							extent = "286 128";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							color = "255 255 255 255";
+
+							new GuiMLTextEditCtrl(nfmgui_description)
+							{
+								profile = "GuiMLTextEditProfile";
+								horizSizing = "width";
+								vertSizing = "height";
+								position = "0 0";
+								extent = "284 128";
+								minExtent = "8 2";
+								enabled = "1";
+								visible = "1";
+								clipToParent = "1";
+								lineSpacing = "2";
+								allowColorChars = "0";
+								maxChars = "-1";
+								text = "desc";
+								maxBitmapHeight = "-1";
+								selectable = "1";
+								autoResize = "1";
+							};
+						};
+					};
+				};
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "height";
+					position = "0 0";
+					extent = "322 376";
+					minExtent = "8 2";
+					enabled = "1";
+					visible = "1";
+					clipToParent = "1";
+					color = "0 82 128 2";
+
+					new GuiScrollCtrl()
+					{
+						profile = "GuiScrollProfile";
+						horizSizing = "width";
+						vertSizing = "height";
+						position = "8 20";
+						extent = "314 356";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						willFirstRespond = "0";
+						hScrollBar = "alwaysOff";
+						vScrollBar = "alwaysOn";
+						constantThumbHeight = "0";
+						childMargin = "0 0";
+						rowHeight = "40";
+						columnWidth = "30";
+
+						new GuiSwatchCtrl(nfmgui_filelist)
+						{
+							profile = "GuiDefaultProfile";
+							horizSizing = "width";
+							vertSizing = "bottom";
+							position = "1 1";
+							extent = "312 2";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							color = "0 0 0 0";
+						};
+					};
+
+					new GuiSwatchCtrl(nfm_loadingscreen)
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "width";
+						vertSizing = "height";
+						position = "0 0";
+						extent = "322 376";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "0";
+						clipToParent = "1";
+						color = "200 200 200 200";
+						
+						new GuiTextCtrl(nfm_loadingmessage)
+						{
+							profile = "GuiTextProfile";
+							horizSizing = "center";
+							vertSizing = "center";
+							position = "137 179";
+							extent = "47 18";
+							minExtent = "8 2";
+							enabled = "1";
+							visible = "1";
+							clipToParent = "1";
+							text = "Loading...";
+							maxLength = "255";
+						};
+					};
+
+					new GuiBitmapButtonCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "left";
+						vertSizing = "bottom";
+						position = "212 0";
+						extent = "48 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "nfm_presssortdate();";
+						text = "    Date";
+						groupNum = "-1";
+						buttonType = "PushButton";
+						bitmap = "base/client/ui/button1";
+						lockAspectRatio = "0";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "0";
+						mKeepCached = "0";
+						mColor = "255 255 255 255";
+					};
+
+					new GuiBitmapButtonCtrl()
+					{
+						profile = "GuiDefaultProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "64 0";
+						extent = "48 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "nfm_presssortname();";
+						text = "    Name";
+						groupNum = "-1";
+						buttonType = "PushButton";
+						bitmap = "base/client/ui/button1";
+						lockAspectRatio = "0";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "0";
+						mKeepCached = "0";
+						mColor = "255 255 255 255";
+					};
+
+					new GuiBitmapButtonCtrl(nfmgui_morebutton)
+					{
+						profile = "BlockButtonProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "8 0";
+						extent = "24 18";
+						minExtent = "8 2";
+						enabled = "1";
+						visible = "1";
+						clipToParent = "1";
+						command = "nfm_pressmore();";
+						text = "v";
+						groupNum = "-1";
+						buttonType = "PushButton";
+						bitmap = "base/client/ui/button1";
+						lockAspectRatio = "0";
+						alignLeft = "0";
+						alignTop = "0";
+						overflowImage = "0";
+						mKeepCached = "0";
+						mColor = "255 255 255 255";
+					};
+				};
+			};
+			//3 main elements end here
+		};
+	};
+};
+

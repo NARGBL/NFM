@@ -1,0 +1,88 @@
+new GuiControl(nfm_imagezoom)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	enabled = "1";
+	visible = "1";
+	clipToParent = "1";
+
+	new GuiSwatchCtrl()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "width";
+		vertSizing = "height";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		enabled = "1";
+		visible = "1";
+		clipToParent = "1";
+		color = "0 0 0 150";
+
+		new GuiBitmapCtrl(nfm_imagezoom_display)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "relative";
+			vertSizing = "relative";
+			position = "64 48";
+			extent = "512 384";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			bitmap = "";
+			wrap = "0";
+			lockAspectRatio = "1";
+			alignLeft = "0";
+			alignTop = "0";
+			overflowImage = "0";
+			keepCached = "0";
+			mColor = "255 255 255 255";
+			mMultiply = "0";
+		};
+
+		new GuiMouseEventCtrl(nfm_imgclickout)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "0 0";
+			extent = "640 480";
+			minExtent = "8 2";
+			enabled = "1";
+			visible = "1";
+			clipToParent = "1";
+			lockMouse = "0";
+
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "left";
+				vertSizing = "bottom";
+				position = "584 8";
+				extent = "48 30";
+				minExtent = "8 2";
+				enabled = "1";
+				visible = "1";
+				clipToParent = "1";
+				command = "canvas.popdialog(nfm_imagezoom);";
+				accelerator = "escape";
+				text = "Close";
+				groupNum = "-1";
+				buttonType = "PushButton";
+				bitmap = "base/client/ui/button1";
+				lockAspectRatio = "0";
+				alignLeft = "0";
+				alignTop = "0";
+				overflowImage = "0";
+				mKeepCached = "0";
+				mColor = "255 255 255 255";
+			};
+		};
+	};
+};
+
